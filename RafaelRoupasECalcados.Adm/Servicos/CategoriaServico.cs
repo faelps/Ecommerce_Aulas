@@ -1,4 +1,6 @@
 ﻿using RafaelRoupasECalcados.Adm.Models;
+using RafaelRoupasECalcados.Adm.Repositorio.Interface;
+using RafaelRoupasECalcados.Adm.Servicos.Factory;
 using RafaelRoupasECalcados.Adm.Servicos.Interface;
 using RafaelRoupasECalcados.Adm.ViewModel;
 using System;
@@ -10,14 +12,22 @@ namespace RafaelRoupasECalcados.Adm.Servicos
 {
     public class CategoriaServico : ICatagoriaServico
     {
-        public Task<Categoria> ObterTodasAsCategorias()
+        private readonly ICategoriaRepositorio categoriaRepositorio;
+        public CategoriaServico(ICategoriaRepositorio categoriaRepositorio)
         {
-            throw new NotImplementedException();
+            this.categoriaRepositorio = categoriaRepositorio;
+        }
+        public async Task<List<Categoria>> ObterTodasAsCategorias()
+        {
+            var retorno = await categoriaRepositorio.ObterCategorias();
+            return retorno;
         }
 
-        public Task SalvarCategoria(AdicionarOuEditarCategoriaViewModel categoria)
+        public void SalvarCategoria(AdicionarOuEditarCategoriaViewModel categoria)
         {
-            throw new NotImplementedException();
+            var categoriaModel = CategoriaFactory.CriarCategoria(categoria);
+            categoriaRepositorio.Salvar(categoriaModel);
+            
         }
     }
 }

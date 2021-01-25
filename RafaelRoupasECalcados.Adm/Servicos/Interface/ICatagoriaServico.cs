@@ -9,7 +9,7 @@ namespace RafaelRoupasECalcados.Adm.Servicos.Interface
 {
     public interface ICatagoriaServico
     {
-        Task<Categoria> ObterTodasAsCategorias();
-        Task SalvarCategoria(AdicionarOuEditarCategoriaViewModel categoria);
+        Task<List<Categoria>> ObterTodasAsCategorias();
+        void SalvarCategoria(AdicionarOuEditarCategoriaViewModel categoria);
     }
 }

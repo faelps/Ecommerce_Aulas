@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RafaelRoupasECalcados.Adm.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,8 +19,19 @@ namespace RafaelRoupasECalcados.Adm.Models
             this.Imagem = imagem;
         }
         public int Id { get; private set; }
+
+
         public string Nome { get; private set; }
         public string Imagem { get; private set; }
         public ICollection<Produto> Produtos { get; set; }
+
+
+
+        internal void CriarCategoria(AdicionarOuEditarCategoriaViewModel categoria)
+        {
+            this.Imagem = categoria.Imagem;
+            this.Nome = categoria.Nome;
+            this.Id = categoria.Id;
+        }
     }
 }

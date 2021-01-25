@@ -28,8 +28,8 @@ namespace RafaelRoupasECalcados.Adm.Controllers
         [HttpPost]
         public async Task<IActionResult> AdicionarCategoria(AdicionarOuEditarCategoriaViewModel categoria)
         {
-            await catagoriaServico.SalvarCategoria(categoria);
-            return View();
+            catagoriaServico.SalvarCategoria(categoria);
+            return RedirectToAction("Index");
         }
     }
 }
